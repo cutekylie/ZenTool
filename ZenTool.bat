@@ -119,15 +119,18 @@ ECHO   / // _ \ '_ \    ! !/ _ \ / _ \! !
 ECHO  / /!  __/ ! ! !   ! ! (_) ! (_) ! !
 ECHO /____\___!_! !_!   !_!\___/ \___/!_!
 ECHO.
-ECHO   1) VSCodium 3) 7-Zip    4) VLC
+ECHO   1) VSCodium 2) 7-Zip    3) VLC
+ECHO   4) Nvidia   5) MAS
 ECHO               0) Menu
 ECHO.
 
 set /p choose=Choose a number: 
 
 if "%choose%"=="1" goto VSCodium
-if "%choose%"=="3" goto 7z
-if "%choose%"=="4" goto VLC
+if "%choose%"=="2" goto 7z
+if "%choose%"=="3" goto VLC
+if "%choose%"=="4" goto NVIDIA
+if "%choose%"=="5" goto MAS
 if "%choose%"=="0" goto Menu
 
 :VSCodium
@@ -142,6 +145,16 @@ goto Utils
 
 :VLC
 winget install -e --id VideoLAN.VLC
+cls
+goto Utils
+
+:NVIDIA
+winget install -e --id TechPowerUp.NVCleanstall
+cls
+goto Utils
+
+:MAS
+powershell -Command "irm https://get.activated.win | iex"
 cls
 goto Utils
 
